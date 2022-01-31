@@ -5,11 +5,26 @@ import astronaut from "./assets/astronaut.png";
 import celebrating from "./assets/celebrating.png";
 import education from "./assets/education.png";
 import taken from "./assets/taken.png";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 const images = [astronaut, celebrating, education, taken];
 
 function App() {
+  const NextArrow = ({ onClick }) => {
+    return (
+      <div className="arrow next" onClick={onClick}>
+        <FaArrowRight />
+      </div>
+    );
+  };
 
+  const PrevArrow = ({ onClick }) => {
+    return (
+      <div className="arrow prev" onClick={onClick}>
+        <FaArrowLeft />
+      </div>
+    );
+  };
 
   const [imageIndex, setImageIndex] = useState(0);
 
@@ -21,6 +36,8 @@ function App() {
     slidesToShow: 3,
     centerMode: true,
     centerPadding: 0,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     beforeChange: (current, next) => setImageIndex(next),
   };
 
